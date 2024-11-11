@@ -4,7 +4,8 @@
   "description": "sample express server to test ci/cd pipelines",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Error: no build specified\""
   },
   "author": "Arav Bhivgade",
   "license": "ISC",
