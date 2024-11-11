@@ -28,3 +28,15 @@ jobs:
 
     - name: Verify Pushed Image
       run: docker pull aravbhivgade/ci-cd-practice:latest 
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          sudo docker pull aravbhivgade/ci-cd-practice:latest
+          sudo docker stop ci-cd-practice || true
+          sudo docker rm ci-cd-practice || true
+          sudo docker run -d --name ci-cd-practice -p 3005:3000 aravbhivgade/ci-cd-practice:latest
